@@ -12,21 +12,29 @@ set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
 
+syntax on
+
 noremap <c-up>  ddkkp
 noremap <c-down> :move +1 <ENTER>
 
 call plug#begin('~/.vim.plugged')
 
 Plug 'scrooloose/nerdtree'
-Plug 'Shougo/denite.nvim'
-Plug 'drewtempelmeyer/palenight.vim'
-Plug 'itchyny/lightline.vim'
-Plug 'airblade/vim-gitgutter'
+Plug 'Shougo/denite.nvim' " navigation of files
+Plug 'drewtempelmeyer/palenight.vim' " colorscheme
+Plug 'itchyny/lightline.vim' " lighting bar
+Plug 'airblade/vim-gitgutter' " git stuff 
 Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'neoclide/coc.nvim', {'branch' : 'release'}
-Plug 'tpope/vim-fugitive', { 'branch' : 'release'}
+Plug 'tpope/vim-fugitive', { 'branch' : 'release'} " git stuff in lighting bar
+Plug 'sheerun/vim-polyglot' " syntax highlighting
+Plug 'neoclide/coc.nvim', { 'branch' : 'release'} " autocompletion
+Plug 'OmniSharp/omnisharp-vim'
+Plug 'w0rp/ale'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'markwoodhall/vim-nuget'
+Plug 'vhdirk/vim-cmake'
 
 call plug#end()
 
@@ -65,3 +73,6 @@ let g:lightline = {
       \ },
       \ }
 
+source ~/AppData/Local/nvim/ale.vim
+source ~/AppData/Local/nvim/coc.vim
+source ~/AppData/Local/nvim/omnisharp.vim
