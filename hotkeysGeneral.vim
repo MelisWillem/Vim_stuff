@@ -15,8 +15,8 @@ vnoremap <A-e> :edit
 nnoremap <A>s :%s/
 
 " close buffer 
-nnoremap <A-q> :q<ENTER> 
-nnoremap <A-Q> :q!<ENTER> 
+nnoremap <C-q> :q<ENTER> 
+nnoremap <C-Q> :q!<ENTER> 
 
 " open a split screen 
 nnoremap <A-v> :vsplit<ENTER> 

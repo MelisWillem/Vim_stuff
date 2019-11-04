@@ -12,6 +12,16 @@ set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
 
+"stuff required when using nvim-qt
+if exists('g:GuiLoaded')
+    " call GuiWindowMaximized(1)
+    GuiTabline 0
+    GuiPopupmenu 0
+    GuiLinespace 2
+    GuiFont! Hack:h10:l
+endif
+
+
 syntax on
 
 call plug#begin('~/.vim.plugged')
@@ -21,6 +31,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/deoplete-clangx'
 Plug 'Shougo/neoinclude.vim/'
 Plug 'deoplete-plugins/deoplete-tag'
+Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'Shougo/denite.nvim' " navigation of files
 
 Plug 'scrooloose/nerdtree'
@@ -55,6 +66,11 @@ Plug 'kassio/neoterm' " This has questional performace need to look into it
 " Plug 'ajh17/vimcompletesme'
 " ------------------------------- 
 
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'powershell install.ps1',
+    \ }
+
 call plug#end()
 
 " Palenight configuration
@@ -78,21 +94,11 @@ let g:lightline = {
       \ }
 
 let g:deoplete#enable_at_startup = 1
-"let g:deoplete#enable_profile = 1
-"call deoplete#custom#var('clangx', 'clang', 'C:\msys64\mingw64\bin\clang.exe')
 call deoplete#custom#option('profile', v:true)
-call deoplete#enable_logging('DEBUG', 'deoplete.log')
-"call deoplete#custom#source('clangx', 'is_debug_enabled', 1)
-"-call deoplete#custom#option('auto_complete', v:true)
-"-call deoplete#custom#option('max_list', 500)
-
+"call deoplete#custom#option('max_list', 500)
 
 source ~/AppData/Local/nvim/hotkeysGeneral.vim
 source ~/AppData/Local/nvim/neoterm.vim
-"-source ~/AppData/Local/nvim/langserver.vim
-" source ~/AppData/Local/nvim/denite.vim
-
-"source ~/AppData/Local/nvim/ale.vim
-"source ~/AppData/Local/nvim/iicoc.vim
-"source ~/AppData/Local/nvim/omnisharp.vim
-"source ~/AppData/Local/nvim/haskell.vim
+source ~/AppData/Local/nvim/deoplete-jedi.vim
+source ~/AppData/Local/nvim/denite.vim
+source ~/AppData/Local/nvim/langserver.vim
