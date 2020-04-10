@@ -6,23 +6,9 @@ inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
-" edit a file -> still need to file filename offc
-nnoremap <A-e> :edit 
-inoremap <A-e> <Esc> :edit 
-vnoremap <A-e> :edit 
-
-" start a substitute on the whole file
-nnoremap <A>s :%s/
-
 " close buffer 
 nnoremap <C-q> :q<ENTER> 
 nnoremap <C-Q> :q!<ENTER> 
-
-" open a split screen 
-nnoremap <A-v> :vsplit<ENTER> 
-nnoremap <A-V> :vsplit<ENTER><c-w><c-w> 
-nnoremap <A-h> :split<ENTER> 
-nnoremap <A-H> :split<ENTER><c-w><c-w> 
 
 " Configure fuzzy finder
 map <C-;> :Files<CR>
@@ -45,5 +31,5 @@ map <S-Insert>		"+gP
 ":set bomb
 ":set fileencoding=utf-8
 
-noremap t :t.<ENTER>
 noremap <C-S> :w<ENTER>
+nnoremap <C-*> :noh

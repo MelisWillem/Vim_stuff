@@ -49,5 +49,5 @@ call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
       \ [ '.git/', '.ropeproject/', '__pycache__/*', '*.pyc',
       \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/', '*.png'])
 
-nnoremap <space> :Denite file <cr>
-
+nnoremap <space> :Denite file -split=floating <cr>
+nnoremap <C-space> :Denite file/rec -start-filter -split=floating <cr>

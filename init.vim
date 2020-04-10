@@ -24,6 +24,7 @@ endif
 
 syntax on
 
+
 call plug#begin('~/.vim.plugged')
 
 "Classic way of doing auto completion, using clang toolchain
@@ -49,6 +50,7 @@ Plug 'ervandew/supertab'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'markwoodhall/vim-nuget'
 Plug 'vhdirk/vim-cmake'
+Plug 'Chiel92/vim-autoformat'
 
 Plug 'neovimhaskell/haskell-vim' " Nice haskell highlighting
 Plug 'alx741/vim-hindent' " Haskell automatic indent
@@ -66,10 +68,21 @@ Plug 'kassio/neoterm' " This has questional performace need to look into it
 " Plug 'ajh17/vimcompletesme'
 " ------------------------------- 
 
+" language server need to install some bin's that differ
+" on windows vs linux
+if has("win32") || has ("win16")
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'powershell install.ps1',
     \ }
+else
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch' : 'next',
+    \ 'do' : 'bash install.sh',
+    \}
+end
+
+Plug 'whonore/Coqtail' | Plug 'let-def/vimbufsync'
 
 call plug#end()
 
@@ -95,10 +108,19 @@ let g:lightline = {
 
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option('profile', v:true)
-"call deoplete#custom#option('max_list', 500)
+call deoplete#custom#option('max_list', 15)
 
-source ~/AppData/Local/nvim/hotkeysGeneral.vim
-source ~/AppData/Local/nvim/neoterm.vim
-source ~/AppData/Local/nvim/deoplete-jedi.vim
-source ~/AppData/Local/nvim/denite.vim
-source ~/AppData/Local/nvim/langserver.vim
+"automatic autoformat on buffer save
+au BufWrite * :Autoformat
+
+" There must be a cleaner way to do this ..
+if has("win32") || has ("win16")
+    let vimStuffLocation = "~/AppData/Local/nvim/Vim_stuff/"
+else
+    let vimStuffLocation =	"~/.config/nvim/Vim_stuff/"
+end
+exec 'source' vimStuffLocation.'hotkeysGeneral.vim'
+exec 'source' vimStuffLocation.'neoterm.vim'
+exec 'source' vimStuffLocation.'deoplete-jedi.vim'
+exec 'source' vimStuffLocation.'denite.vim'
+exec 'source' vimStuffLocation.'langserver.vim'
