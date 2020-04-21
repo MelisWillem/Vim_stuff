@@ -38,7 +38,7 @@ Plug 'Shougo/denite.nvim' " navigation of files
 Plug 'scrooloose/nerdtree'
 Plug 'drewtempelmeyer/palenight.vim' " colorscheme
 Plug 'itchyny/lightline.vim' " lighting bar
-Plug 'airblade/vim-gitgutter' " git stuff 
+Plug 'airblade/vim-gitgutter' " git stuff
 Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -51,6 +51,8 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'markwoodhall/vim-nuget'
 Plug 'vhdirk/vim-cmake'
 Plug 'Chiel92/vim-autoformat'
+Plug 'plasticboy/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': {-> mkdp#util#install()}}
 
 Plug 'neovimhaskell/haskell-vim' " Nice haskell highlighting
 Plug 'alx741/vim-hindent' " Haskell automatic indent
@@ -62,24 +64,24 @@ Plug 'kassio/neoterm' " This has questional performace need to look into it
 "again later...
 
 " These 3 work nicely together to get the a simple LSP to work
-" At the moment " 
+" At the moment "
 " Plug 'prabirshrestha/async.vim'
 " Plug 'prabirshrestha/vim-lsp'
 " Plug 'ajh17/vimcompletesme'
-" ------------------------------- 
+" -------------------------------
 
 " language server need to install some bin's that differ
 " on windows vs linux
 if has("win32") || has ("win16")
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'powershell install.ps1',
-    \ }
+    Plug 'autozimu/LanguageClient-neovim', {
+                \ 'branch': 'next',
+                \ 'do': 'powershell install.ps1',
+                \ }
 else
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch' : 'next',
-    \ 'do' : 'bash install.sh',
-    \}
+    Plug 'autozimu/LanguageClient-neovim', {
+                \ 'branch' : 'next',
+                \ 'do' : 'bash install.sh',
+                \}
 end
 
 Plug 'whonore/Coqtail' | Plug 'let-def/vimbufsync'
@@ -92,32 +94,32 @@ colorscheme palenight
 
 "lightLine configuration
 if !has('gui_running')
-   set t_Co=256
+    set t_Co=256
 endif
 
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
-      \ },
-      \ }
+            \ 'colorscheme': 'wombat',
+            \ 'active': {
+            \   'left': [ [ 'mode', 'paste' ],
+            \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+            \ },
+            \ 'component_function': {
+            \   'gitbranch': 'fugitive#head'
+            \ },
+            \ }
 
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option('profile', v:true)
 call deoplete#custom#option('max_list', 15)
 
 "automatic autoformat on buffer save
-au BufWrite * :Autoformat
+"au BufWrite * :Autoformat
 
 " There must be a cleaner way to do this ..
 if has("win32") || has ("win16")
     let vimStuffLocation = "~/AppData/Local/nvim/Vim_stuff/"
 else
-    let vimStuffLocation =	"~/.config/nvim/Vim_stuff/"
+    let vimStuffLocation =  "~/.config/nvim/Vim_stuff/"
 end
 exec 'source' vimStuffLocation.'hotkeysGeneral.vim'
 exec 'source' vimStuffLocation.'neoterm.vim'
