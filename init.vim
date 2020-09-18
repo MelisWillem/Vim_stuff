@@ -26,6 +26,7 @@ syntax on
 
 
 call plug#begin('~/.vim.plugged')
+"Plug 'ervandew/supertab' " supertab seems super broken
 
 "Classic way of doing auto completion, using clang toolchain
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -46,13 +47,13 @@ Plug 'tpope/vim-fugitive', { 'branch' : 'release'} " git stuff in lighting bar
 Plug 'rbong/vim-flog'  " git tree in vim --> do we really need this? doesnt seem like something an editor needs
 Plug 'sheerun/vim-polyglot' " syntax highlighting
 
-Plug 'ervandew/supertab'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'markwoodhall/vim-nuget'
 Plug 'vhdirk/vim-cmake'
 Plug 'Chiel92/vim-autoformat'
 Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': {-> mkdp#util#install()}}
+Plug 'https://github.com/soramugi/auto-ctags.vim'
 
 Plug 'neovimhaskell/haskell-vim' " Nice haskell highlighting
 Plug 'alx741/vim-hindent' " Haskell automatic indent
@@ -121,8 +122,8 @@ if has("win32") || has ("win16")
 else
     let vimStuffLocation =  "~/.config/nvim/Vim_stuff/"
 end
-exec 'source' vimStuffLocation.'hotkeysGeneral.vim'
 exec 'source' vimStuffLocation.'neoterm.vim'
 exec 'source' vimStuffLocation.'deoplete-jedi.vim'
 exec 'source' vimStuffLocation.'denite.vim'
 exec 'source' vimStuffLocation.'langserver.vim'
+exec 'source' vimStuffLocation.'hotkeysGeneral.vim'
