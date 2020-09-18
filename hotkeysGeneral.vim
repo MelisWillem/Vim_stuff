@@ -1,3 +1,6 @@
+set completeopt-=preview
+
+
 " Move line up and down
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
@@ -33,3 +36,12 @@ map <S-Insert>		"+gP
 
 noremap <C-S> :w<ENTER>
 nnoremap <C-*> :noh
+
+nnoremap f<C-j> :make <CR>
+nnoremap <C-j> :cn <CR>
+nnoremap <C-k> :cp <CR>
+nnoremap gd <C-]> <CR>
+
+" Revert tab and shift tab, not sure why this is needed.
+inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
