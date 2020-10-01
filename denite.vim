@@ -87,6 +87,6 @@ call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
 call denite#custom#var('grep', 'separator', ['--'])
 call denite#custom#var('grep', 'final_opts', [])
 
-nnoremap <space> :Denite -split=floating -winrow=1 file <cr>
-nnoremap <C-space> :Denite  -start-filter -split=floating -winrow=1 file/rec<cr>
+nnoremap <Leader>f :Denite -split=floating -winrow=1 file <cr>
+nnoremap <Leader>; :Denite  -start-filter -split=floating -winrow=1 file/rec<cr>
 nnoremap <C-p> :DeniteProjectDir -start-filter -split=floating -winrow=1 file/rec grep:::!<CR>

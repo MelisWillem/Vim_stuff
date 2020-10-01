@@ -54,6 +54,7 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': {-> mkdp#util#install()}}
 Plug 'https://github.com/soramugi/auto-ctags.vim'
+Plug 'kana/vim-submode'
 
 Plug 'neovimhaskell/haskell-vim' " Nice haskell highlighting
 Plug 'alx741/vim-hindent' " Haskell automatic indent
