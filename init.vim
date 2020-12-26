@@ -21,6 +21,8 @@ if exists('g:GuiLoaded')
     GuiFont! Hack:h10:l
 endif
 
+nnoremap <SPACE> <Nop>
+let mapleader="\<SPACE>"
 
 syntax on
 
@@ -36,15 +38,10 @@ Plug 'deoplete-plugins/deoplete-tag'
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'Shougo/denite.nvim' " navigation of files
 
-Plug 'scrooloose/nerdtree'
 Plug 'drewtempelmeyer/palenight.vim' " colorscheme
 Plug 'itchyny/lightline.vim' " lighting bar
-Plug 'airblade/vim-gitgutter' " git stuff
 Plug 'tpope/vim-surround'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive', { 'branch' : 'release'} " git stuff in lighting bar
-Plug 'rbong/vim-flog'  " git tree in vim --> do we really need this? doesnt seem like something an editor needs
 Plug 'sheerun/vim-polyglot' " syntax highlighting
 
 Plug 'editorconfig/editorconfig-vim'
@@ -56,20 +53,22 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': {-> mkdp#util#install()}}
 Plug 'https://github.com/soramugi/auto-ctags.vim'
 Plug 'kana/vim-submode'
 
+"Plug 'LumaKernel/coqpit.vim'
+Plug 'whonore/Coqtail' 
+
 Plug 'neovimhaskell/haskell-vim' " Nice haskell highlighting
 Plug 'alx741/vim-hindent' " Haskell automatic indent
 " Plug 'parsonsmatt/intero-neovim' " very weird doesn seem to work at all,
 " also it breaks the syntax highlighting
 
-Plug 'kassio/neoterm' " This has questional performace need to look into it
-"Plug 'tjdevries/nvim-langserver-shim' " seems like quiet the hassle maybe try
-"again later...
+" Telescope related dependencies.
+" Plug 'nvim-lua/popup.nvim'
+" Plug 'nvim-lua/plenary.nvim'
+" Plug 'nvim-telescope/telescope.nvim'
 
-" These 3 work nicely together to get the a simple LSP to work
-" At the moment "
-" Plug 'prabirshrestha/async.vim'
-" Plug 'prabirshrestha/vim-lsp'
-" Plug 'ajh17/vimcompletesme'
+" SLIME:
+Plug 'jpalardy/vim-slime', {'branch': 'main'}
+"
 " -------------------------------
 
 " language server need to install some bin's that differ
@@ -128,3 +127,7 @@ exec 'source' vimStuffLocation.'deoplete-jedi.vim'
 exec 'source' vimStuffLocation.'denite.vim'
 exec 'source' vimStuffLocation.'langserver.vim'
 exec 'source' vimStuffLocation.'hotkeysGeneral.vim'
+exec 'source' vimStuffLocation.'coqpit.vim'
+exec 'source' vimStuffLocation.'telescope.vim'
+exec 'source' vimStuffLocation.'slime.vim'
+exec 'source' vimStuffLocation.'submode.vim'
