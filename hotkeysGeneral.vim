@@ -33,3 +33,7 @@ map <S-Insert>		"+gP
 
 noremap <C-S> :w<ENTER>
 nnoremap <C-*> :noh
+
+nnoremap f<C-j> :make<CR>
+nnoremap <C-j> :cn <CR>
+nnoremap <C-k> :cp <CR>
