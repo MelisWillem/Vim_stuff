@@ -28,15 +28,6 @@ syntax on
 
 
 call plug#begin('~/.vim.plugged')
-"Plug 'ervandew/supertab' " supertab seems super broken
-
-"Classic way of doing auto completion, using clang toolchain
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/deoplete-clangx'
-Plug 'Shougo/neoinclude.vim/'
-Plug 'deoplete-plugins/deoplete-tag'
-Plug 'deoplete-plugins/deoplete-jedi'
-Plug 'Shougo/denite.nvim' " navigation of files
 
 Plug 'drewtempelmeyer/palenight.vim' " colorscheme
 Plug 'itchyny/lightline.vim' " lighting bar
@@ -53,6 +44,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': {-> mkdp#util#install()}}
 Plug 'https://github.com/soramugi/auto-ctags.vim'
 Plug 'kana/vim-submode'
 
+"Plug 'neomake/neomake'
+
 "Plug 'LumaKernel/coqpit.vim'
 Plug 'whonore/Coqtail' 
 
@@ -60,30 +53,18 @@ Plug 'neovimhaskell/haskell-vim' " Nice haskell highlighting
 Plug 'alx741/vim-hindent' " Haskell automatic indent
 " Plug 'parsonsmatt/intero-neovim' " very weird doesn seem to work at all,
 " also it breaks the syntax highlighting
+"
+" autocomplete-> used by lsp 
+Plug 'hrsh7th/nvim-compe'
+Plug 'neovim/nvim-lspconfig'
 
 " Telescope related dependencies.
-" Plug 'nvim-lua/popup.nvim'
-" Plug 'nvim-lua/plenary.nvim'
-" Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " SLIME:
 Plug 'jpalardy/vim-slime', {'branch': 'main'}
-"
-" -------------------------------
-
-" language server need to install some bin's that differ
-" on windows vs linux
-if has("win32") || has ("win16")
-    Plug 'autozimu/LanguageClient-neovim', {
-                \ 'branch': 'next',
-                \ 'do': 'powershell install.ps1',
-                \ }
-else
-    Plug 'autozimu/LanguageClient-neovim', {
-                \ 'branch' : 'next',
-                \ 'do' : 'bash install.sh',
-                \}
-end
 
 Plug 'whonore/Coqtail' | Plug 'let-def/vimbufsync'
 
@@ -109,10 +90,6 @@ let g:lightline = {
             \ },
             \ }
 
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option('profile', v:true)
-call deoplete#custom#option('max_list', 15)
-
 "automatic autoformat on buffer save
 "au BufWrite * :Autoformat
 
@@ -123,8 +100,6 @@ else
     let vimStuffLocation =  "~/.config/nvim/Vim_stuff/"
 end
 exec 'source' vimStuffLocation.'neoterm.vim'
-exec 'source' vimStuffLocation.'deoplete-jedi.vim'
-exec 'source' vimStuffLocation.'denite.vim'
 exec 'source' vimStuffLocation.'langserver.vim'
 exec 'source' vimStuffLocation.'hotkeysGeneral.vim'
 exec 'source' vimStuffLocation.'coqpit.vim'

@@ -26,8 +26,3 @@ inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
 " SLIME-VIM
 nnoremap <leader>g SlimeSend<CR>
-
-" deoplete is rather slow, so load after vim is fully loaded...
-" Enable deoplete when InsertEnter.
-let g:deoplete#enable_at_startup = 0
-autocmd InsertEnter * call deoplete#enable()
