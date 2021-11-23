@@ -32,7 +32,7 @@ call plug#begin('~/.vim.plugged')
 Plug 'drewtempelmeyer/palenight.vim' " colorscheme
 Plug 'itchyny/lightline.vim' " lighting bar
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive', { 'branch' : 'release'} " git stuff in lighting bar
+Plug 'tpope/vim-fugitive'
 Plug 'sheerun/vim-polyglot' " syntax highlighting
 
 Plug 'editorconfig/editorconfig-vim'
@@ -43,6 +43,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': {-> mkdp#util#install()}}
 Plug 'https://github.com/soramugi/auto-ctags.vim'
 Plug 'kana/vim-submode'
+Plug 'sakhnik/nvim-gdb', { 'do' : ':!./install.sh'}
 
 "Plug 'neomake/neomake'
 
@@ -50,7 +51,6 @@ Plug 'kana/vim-submode'
 Plug 'whonore/Coqtail' 
 
 Plug 'neovimhaskell/haskell-vim' " Nice haskell highlighting
-Plug 'alx741/vim-hindent' " Haskell automatic indent
 " Plug 'parsonsmatt/intero-neovim' " very weird doesn seem to work at all,
 " also it breaks the syntax highlighting
 "
@@ -90,8 +90,9 @@ let g:lightline = {
             \ },
             \ }
 
-"automatic autoformat on buffer save
-"au BufWrite * :Autoformat
+" space is leader so overwrite the default stuff first.
+nnoremap <SPACE> <Nop>
+let mapleader=" "
 
 " There must be a cleaner way to do this ..
 if has("win32") || has ("win16")
