@@ -28,7 +28,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
     vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
 
-    vim.keymap.set('n', '<leader>i', '<cmd>ClangdToggleInlayHints<cr>', opts)
+    vim.keymap.set('n', '<leader>i', 'lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<cr>', opts)
   end,
 })
 
@@ -88,8 +88,6 @@ require('vim.lsp.log').set_level(0)
 local lspconfig = require'lspconfig'
 
 lspconfig.clangd.setup{}
-require("clangd_extensions.inlay_hints").setup_autocmd()
-require("clangd_extensions.inlay_hints").set_inlay_hints()
 
 -- mlir stuff
 lspconfig.mlir_lsp_server.setup{
@@ -102,8 +100,8 @@ lspconfig.mlir_lsp_server.setup{
 lspconfig.tblgen_lsp_server.setup({
    on_new_config = function(config)
      config.cmd = {
-       "llvm-18.1.6-assert/bin/tblgen-lsp-server",
-       "--tablegen-compilation-database=build/tablegen_compile_commands.yml"
+       "/home/zilleplus/public_code/llvm-18.1.6-assert/bin/tblgen-lsp-server",
+       "--tablegen-compilation-database=/home/zilleplus/code/cpp/mlir-experiment/build/tablegen_compile_commands.yml"
      }
    end,
 })
@@ -111,7 +109,7 @@ lspconfig.mlir_pdll_lsp_server.setup{
    on_new_config = function(config)
      config.cmd = {
        "llvm-18.1.6-assert/bin/pdll-lsp-server",
-       "--tablegen-compilation-database=build/tablegen_compile_commands.yml"
+       "--tablegen-compilation-database=/home/zilleplus/code/cpp/mlir-experiment/build/tablegen_compile_commands.yml"
      }
    end,
 }

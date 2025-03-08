@@ -22,8 +22,15 @@ require("lazy").setup({
     {'hrsh7th/cmp-nvim-lsp'},
     {'rose-pine/neovim', name = 'rose-pine' },
     {
-    'nvim-telescope/telescope.nvim', tag = '0.1.8',
-      dependencies = { 'nvim-lua/plenary.nvim' }
+      -- live-grep allows the user to add arguments to 
+      -- rg while searching
+      -- example: --glob=*.td tosa 
+      --    -> find all the td files with tosa in it
+      --    -> "!" negates the search
+      "nvim-telescope/telescope-live-grep-args.nvim",
+      dependencies = 
+      { 'nvim-lua/plenary.nvim', -- coroutines used by telescope
+        'nvim-telescope/telescope.nvim' }
     }
 })
 
